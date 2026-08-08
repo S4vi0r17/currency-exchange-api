@@ -1,11 +1,15 @@
 import { Hono } from 'hono';
+import { seedAdminUser } from './bootstrap/seed-admin';
 import { env } from './config/env';
 import { connectToDatabase, isDatabaseConnected } from './db';
 import { authRoutes } from './routes/auth.routes';
+import { rateRoutes } from './routes/rates.routes';
+import type { AppEnv } from './types/hono';
 
-const app = new Hono();
+const app = new Hono<AppEnv>();
 
 app.route('/auth', authRoutes);
+app.route('/rates', rateRoutes);
 
 // GET /health - liveness + chequeo de conexión a Mongo
 app.get('/health', (c) => {
@@ -23,6 +27,7 @@ app.get('/health', (c) => {
 try {
   await connectToDatabase();
   console.log('✓ Connected to MongoDB');
+  await seedAdminUser();
 } catch (error) {
   // ! si no hay DB al arrancar, no tiene sentido levantar el server
   console.error('✗ Failed to connect to MongoDB:', error);

@@ -14,6 +14,10 @@ const envSchema = z.object({
   SMTP_HOST: z.string().default('localhost'),
   SMTP_PORT: z.coerce.number().int().positive().default(1025),
   SMTP_FROM: z.string().default('Currency Exchange <no-reply@currency-exchange.local>'),
+
+  // NOTE: se siembra el usuario al arrancar
+  ADMIN_SEED_EMAIL: z.string().email(),
+  ADMIN_SEED_PASSWORD: z.string().min(8),
 });
 
 export const env = envSchema.parse(process.env);
