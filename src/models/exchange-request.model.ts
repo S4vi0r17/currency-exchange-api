@@ -12,6 +12,7 @@ export interface ExchangeRequestDocument {
     salePrice: number;
     sourceId: string;
   };
+  createdAt?: Date;
 }
 
 const exchangeRequestSchema = new Schema<ExchangeRequestDocument>(
