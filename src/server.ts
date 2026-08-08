@@ -1,8 +1,11 @@
 import { Hono } from 'hono';
 import { env } from './config/env';
 import { connectToDatabase, isDatabaseConnected } from './db';
+import { authRoutes } from './routes/auth.routes';
 
 const app = new Hono();
+
+app.route('/auth', authRoutes);
 
 // GET /health - liveness + chequeo de conexión a Mongo
 app.get('/health', (c) => {

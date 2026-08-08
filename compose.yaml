@@ -13,5 +13,14 @@ services:
       timeout: 5s
       retries: 5
 
+  # Fake SMTP server. UI en :8025.
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: currency-exchange-mailhog
+    restart: unless-stopped
+    ports:
+      - '1025:1025' # SMTP
+      - '8025:8025' # Web UI
+
 volumes:
   mongo-data:
