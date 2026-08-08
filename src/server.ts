@@ -19,17 +19,16 @@ app.get('/health', (c) => {
 
 try {
   await connectToDatabase();
-  console.log('✅ Connected to MongoDB');
+  console.log('✓ Connected to MongoDB');
 } catch (error) {
   // ! si no hay DB al arrancar, no tiene sentido levantar el server
-  console.error('❌ Failed to connect to MongoDB:', error);
+  console.error('✗ Failed to connect to MongoDB:', error);
   process.exit(1);
 }
 
-console.log(`🚀 Server ready on http://localhost:${env.PORT}`);
+console.log(`› Server ready on http://localhost:${env.PORT}`);
 
 // WHY: Bun detecta este default export (fetch + port) y llama a Bun.serve()
-// automáticamente, sin necesitar @hono/node-server.
 export default {
   port: env.PORT,
   fetch: app.fetch,
