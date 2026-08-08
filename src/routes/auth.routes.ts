@@ -8,14 +8,14 @@ import { signAuthToken } from '../security/token';
 export const authRoutes = new Hono();
 
 const registerSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(8, 'Password must be at least 8 characters long'),
 });
 
 authRoutes.post('/register', async (c) => {
   const parsed = registerSchema.safeParse(await c.req.json());
   if (!parsed.success) {
-    return c.json({ error: 'Validation error', details: parsed.error.flatten() }, 400);
+    return c.json({ error: 'Validation error', details: z.treeifyError(parsed.error) }, 400);
   }
   const { email, password } = parsed.data;
 
@@ -38,14 +38,14 @@ authRoutes.post('/register', async (c) => {
 });
 
 const loginSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(1),
 });
 
 authRoutes.post('/login', async (c) => {
   const parsed = loginSchema.safeParse(await c.req.json());
   if (!parsed.success) {
-    return c.json({ error: 'Validation error', details: parsed.error.flatten() }, 400);
+    return c.json({ error: 'Validation error', details: z.treeifyError(parsed.error) }, 400);
   }
   const { email, password } = parsed.data;
 

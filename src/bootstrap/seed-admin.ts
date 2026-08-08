@@ -2,7 +2,7 @@ import { env } from '../config/env';
 import { UserModel } from '../models/user.model';
 import { hashPassword } from '../security/password';
 
-// WHY: nos ahorra el endpoint público de "hazte admin" 
+// WHY: nos ahorra el endpoint público de "hazte admin"
 export async function seedAdminUser(): Promise<void> {
   const existing = await UserModel.findOne({ email: env.ADMIN_SEED_EMAIL });
   if (existing) return;

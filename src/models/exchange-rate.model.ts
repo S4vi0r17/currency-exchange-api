@@ -1,4 +1,4 @@
-import { Schema, type Types, model } from 'mongoose';
+import { model, Schema, type Types } from 'mongoose';
 
 export type RateType = 'purchase' | 'sale';
 

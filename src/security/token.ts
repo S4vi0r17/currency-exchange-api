@@ -1,4 +1,4 @@
-import { type JWK, SignJWT, importJWK, jwtVerify } from 'jose';
+import { importJWK, type JWK, jwtVerify, SignJWT } from 'jose';
 import { env } from '../config/env';
 
 const ISSUER = 'currency-exchange-api';

@@ -4,7 +4,10 @@ import { z } from 'zod';
 import { fetchCurrentRates } from '../external/rate-provider';
 import { authMiddleware } from '../middlewares/auth.middleware';
 import type { RateType } from '../models/exchange-rate.model';
-import { ExchangeRequestModel, type ExchangeRequestDocument } from '../models/exchange-request.model';
+import {
+  type ExchangeRequestDocument,
+  ExchangeRequestModel,
+} from '../models/exchange-request.model';
 import type { AppEnv } from '../types/hono';
 import { roundToCents } from '../utils/money';
 
@@ -34,7 +37,7 @@ const createExchangeRequestSchema = z.object({
 exchangeRequestRoutes.post('/', async (c) => {
   const parsed = createExchangeRequestSchema.safeParse(await c.req.json());
   if (!parsed.success) {
-    return c.json({ error: 'Validation error', details: parsed.error.flatten() }, 400);
+    return c.json({ error: 'Validation error', details: z.treeifyError(parsed.error) }, 400);
   }
 
   const type = RATE_TYPE_TO_DOMAIN[parsed.data.tipo_de_cambio];
@@ -72,7 +75,7 @@ const listQuerySchema = z.object({
 exchangeRequestRoutes.get('/', async (c) => {
   const parsed = listQuerySchema.safeParse(c.req.query());
   if (!parsed.success) {
-    return c.json({ error: 'Validation error', details: parsed.error.flatten() }, 400);
+    return c.json({ error: 'Validation error', details: z.treeifyError(parsed.error) }, 400);
   }
   const { page, perPage } = parsed.data;
   const userId = c.get('userId');

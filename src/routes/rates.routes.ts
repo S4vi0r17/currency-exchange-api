@@ -21,7 +21,7 @@ const createRateSchema = z.object({
 rateRoutes.post('/', async (c) => {
   const parsed = createRateSchema.safeParse(await c.req.json());
   if (!parsed.success) {
-    return c.json({ error: 'Validation error', details: parsed.error.flatten() }, 400);
+    return c.json({ error: 'Validation error', details: z.treeifyError(parsed.error) }, 400);
   }
 
   const type = RATE_TYPE_TO_DOMAIN[parsed.data.tipo_de_cambio];

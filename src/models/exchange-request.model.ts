@@ -1,4 +1,4 @@
-import { Schema, type Types, model } from 'mongoose';
+import { model, Schema, type Types } from 'mongoose';
 import type { RateType } from './exchange-rate.model';
 
 export interface ExchangeRequestDocument {
