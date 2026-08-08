@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { env } from '../config/env';
+import { roundToRatePrecision } from '../utils/money';
 
 export interface ExternalRates {
   purchasePrice: number;
@@ -30,9 +31,10 @@ export async function fetchCurrentRates(): Promise<ExternalRates> {
     throw new Error('External rates API returned an error');
   }
 
+  // NOTE: forzamos 4 decimales al guardar (aunque la API externa lo devuelve)
   return {
-    purchasePrice: body.data.purchase_price,
-    salePrice: body.data.sale_price,
+    purchasePrice: roundToRatePrecision(body.data.purchase_price),
+    salePrice: roundToRatePrecision(body.data.sale_price),
     sourceId: body.data._id,
   };
 }

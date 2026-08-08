@@ -41,7 +41,8 @@ exchangeRequestRoutes.post('/', async (c) => {
   }
 
   const type = RATE_TYPE_TO_DOMAIN[parsed.data.tipo_de_cambio];
-  const amountSent = parsed.data.monto_enviar;
+  // NOTE: no confiamos en que el cliente lo mande ya redondeado
+  const amountSent = roundToCents(parsed.data.monto_enviar);
 
   let rates: Awaited<ReturnType<typeof fetchCurrentRates>>;
   try {

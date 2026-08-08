@@ -1,4 +1,15 @@
-// NOTE: redondeo a 2 decimales para no arrastrar el ruido de precisión de floats
+// NOTE: redondeo genérico -- evita arrastrar el ruido de precisión de floats
+function roundToDecimals(amount: number, decimals: number): number {
+  const factor = 10 ** decimals;
+  return Math.round(amount * factor) / factor;
+}
+
+// monto_enviar / monto_recibir: 2 decimales
 export function roundToCents(amount: number): number {
-  return Math.round(amount * 100) / 100;
+  return roundToDecimals(amount, 2);
+}
+
+// purchase_price / sale_price: 4 decimales
+export function roundToRatePrecision(amount: number): number {
+  return roundToDecimals(amount, 4);
 }
