@@ -1,17 +1,14 @@
 import { Hono } from 'hono';
-import { seedAdminUser } from './bootstrap/seed-admin';
 import { env } from './config/env';
-import { connectToDatabase, isDatabaseConnected } from './db';
-import { authRoutes } from './routes/auth.routes';
-import { exchangeRequestRoutes } from './routes/exchange-requests.routes';
-import { rateRoutes } from './routes/rates.routes';
-import type { AppEnv } from './types/hono';
+import { container } from './infrastructure/composition-root';
+import { connectToDatabase, isDatabaseConnected } from './infrastructure/db/connection';
+import type { AppEnv } from './infrastructure/web/types';
 
 const app = new Hono<AppEnv>();
 
-app.route('/auth', authRoutes);
-app.route('/rates', rateRoutes);
-app.route('/exchange-requests', exchangeRequestRoutes);
+app.route('/auth', container.routes.auth);
+app.route('/rates', container.routes.rates);
+app.route('/exchange-requests', container.routes.exchangeRequests);
 
 // GET /health - liveness + chequeo de conexión a Mongo
 app.get('/health', (c) => {
@@ -29,7 +26,7 @@ app.get('/health', (c) => {
 try {
   await connectToDatabase();
   console.log('✓ Connected to MongoDB');
-  await seedAdminUser();
+  await container.useCases.seedAdminUser.execute(env.ADMIN_SEED_EMAIL, env.ADMIN_SEED_PASSWORD);
 } catch (error) {
   // ! si no hay DB al arrancar, no tiene sentido levantar el server
   console.error('✗ Failed to connect to MongoDB:', error);

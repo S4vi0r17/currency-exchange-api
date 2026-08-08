@@ -7,7 +7,7 @@ const envSchema = z.object({
   MONGO_URI: z.string().min(1, 'MONGO_URI is required'),
 
   // SECURITY: solo lectura, no requiere credenciales
-  EXTERNAL_RATES_URL: z.string().url(),
+  EXTERNAL_RATES_URL: z.url(),
 
   // NOTE: llaves en formato JWK (JSON)
   JWT_PRIVATE_KEY: z.string().min(1, 'JWT_PRIVATE_KEY is required'),
@@ -18,8 +18,11 @@ const envSchema = z.object({
   SMTP_PORT: z.coerce.number().int().positive().default(1025),
   SMTP_FROM: z.string().default('Currency Exchange <no-reply@currency-exchange.local>'),
 
+  // NOTE: adapter alternativo de email -- si está seteado, se usa Resend en vez de Mailhog/SMTP
+  RESEND_API_KEY: z.string().optional(),
+
   // NOTE: se siembra el usuario al arrancar
-  ADMIN_SEED_EMAIL: z.string().email(),
+  ADMIN_SEED_EMAIL: z.email(),
   ADMIN_SEED_PASSWORD: z.string().min(8),
 });
 
