@@ -1,7 +1,7 @@
-import { InvalidCredentialsError } from '../../domain/errors/domain-errors';
-import type { PasswordHasher } from '../../domain/ports/password-hasher.port';
-import type { TokenService } from '../../domain/ports/token-service.port';
-import type { UserRepository } from '../../domain/ports/user-repository.port';
+import { InvalidCredentialsError } from '@/domain/errors/domain-errors';
+import type { PasswordHasher } from '@/domain/ports/password-hasher.port';
+import type { TokenService } from '@/domain/ports/token-service.port';
+import type { UserRepository } from '@/domain/ports/user-repository.port';
 
 export interface LoginUserInput {
   email: string;

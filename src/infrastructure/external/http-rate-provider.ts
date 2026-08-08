@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { env } from '../../config/env';
-import type { RateSnapshot } from '../../domain/entities/exchange-request.entity';
-import type { RateProvider } from '../../domain/ports/rate-provider.port';
-import { roundToRatePrecision } from '../../domain/value-objects/money';
+import { env } from '@/config/env';
+import type { RateSnapshot } from '@/domain/entities/exchange-request.entity';
+import type { RateProvider } from '@/domain/ports/rate-provider.port';
+import { roundToRatePrecision } from '@/domain/value-objects/money';
 
 // NOTE: solo mapeamos los campos que necesitamos
 const externalRatesResponseSchema = z.object({

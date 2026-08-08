@@ -1,11 +1,8 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
-import type { LoginUserUseCase } from '../../../application/use-cases/login-user.use-case';
-import type { RegisterUserUseCase } from '../../../application/use-cases/register-user.use-case';
-import {
-  InvalidCredentialsError,
-  UserAlreadyExistsError,
-} from '../../../domain/errors/domain-errors';
+import type { LoginUserUseCase } from '@/application/use-cases/login-user.use-case';
+import type { RegisterUserUseCase } from '@/application/use-cases/register-user.use-case';
+import { InvalidCredentialsError, UserAlreadyExistsError } from '@/domain/errors/domain-errors';
 
 const registerSchema = z.object({
   email: z.email(),

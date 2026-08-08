@@ -1,5 +1,5 @@
-import type { User } from '../../../domain/entities/user.entity';
-import type { UserRepository } from '../../../domain/ports/user-repository.port';
+import type { User } from '@/domain/entities/user.entity';
+import type { UserRepository } from '@/domain/ports/user-repository.port';
 import { type UserDocument, UserModel } from '../models/user.model';
 
 function toDomain(doc: UserDocument & { _id: { toString(): string } }): User {

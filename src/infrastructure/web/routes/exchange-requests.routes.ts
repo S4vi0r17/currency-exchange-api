@@ -1,15 +1,15 @@
 import { Hono, type MiddlewareHandler } from 'hono';
 import { z } from 'zod';
-import type { CreateExchangeRequestUseCase } from '../../../application/use-cases/create-exchange-request.use-case';
-import type { DeleteExchangeRequestUseCase } from '../../../application/use-cases/delete-exchange-request.use-case';
-import type { GetExchangeRequestUseCase } from '../../../application/use-cases/get-exchange-request.use-case';
-import type { ListExchangeRequestsUseCase } from '../../../application/use-cases/list-exchange-requests.use-case';
-import type { RateType } from '../../../domain/entities/exchange-rate.entity';
-import type { ExchangeRequest } from '../../../domain/entities/exchange-request.entity';
+import type { CreateExchangeRequestUseCase } from '@/application/use-cases/create-exchange-request.use-case';
+import type { DeleteExchangeRequestUseCase } from '@/application/use-cases/delete-exchange-request.use-case';
+import type { GetExchangeRequestUseCase } from '@/application/use-cases/get-exchange-request.use-case';
+import type { ListExchangeRequestsUseCase } from '@/application/use-cases/list-exchange-requests.use-case';
+import type { RateType } from '@/domain/entities/exchange-rate.entity';
+import type { ExchangeRequest } from '@/domain/entities/exchange-request.entity';
 import {
   ExchangeRateProviderUnavailableError,
   ExchangeRequestNotFoundError,
-} from '../../../domain/errors/domain-errors';
+} from '@/domain/errors/domain-errors';
 import type { AppEnv } from '../types';
 
 const RATE_TYPE_TO_DOMAIN: Record<'compra' | 'venta', RateType> = {

@@ -1,5 +1,5 @@
-import type { ExchangeRate, RateType } from '../../../domain/entities/exchange-rate.entity';
-import type { ExchangeRateRepository } from '../../../domain/ports/exchange-rate-repository.port';
+import type { ExchangeRate, RateType } from '@/domain/entities/exchange-rate.entity';
+import type { ExchangeRateRepository } from '@/domain/ports/exchange-rate-repository.port';
 import { type ExchangeRateDocument, ExchangeRateModel } from '../models/exchange-rate.model';
 
 function toDomain(doc: ExchangeRateDocument & { _id: { toString(): string } }): ExchangeRate {

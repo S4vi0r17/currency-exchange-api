@@ -1,5 +1,5 @@
-import type { PasswordHasher } from '../../domain/ports/password-hasher.port';
-import type { UserRepository } from '../../domain/ports/user-repository.port';
+import type { PasswordHasher } from '@/domain/ports/password-hasher.port';
+import type { UserRepository } from '@/domain/ports/user-repository.port';
 
 export class SeedAdminUserUseCase {
   constructor(

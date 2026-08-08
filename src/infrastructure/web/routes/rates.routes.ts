@@ -1,8 +1,8 @@
 import { Hono, type MiddlewareHandler } from 'hono';
 import { z } from 'zod';
-import type { CreateExchangeRateUseCase } from '../../../application/use-cases/create-exchange-rate.use-case';
-import type { ListExchangeRatesUseCase } from '../../../application/use-cases/list-exchange-rates.use-case';
-import type { ExchangeRate, RateType } from '../../../domain/entities/exchange-rate.entity';
+import type { CreateExchangeRateUseCase } from '@/application/use-cases/create-exchange-rate.use-case';
+import type { ListExchangeRatesUseCase } from '@/application/use-cases/list-exchange-rates.use-case';
+import type { ExchangeRate, RateType } from '@/domain/entities/exchange-rate.entity';
 import { adminOnlyMiddleware } from '../middlewares/admin.middleware';
 import type { AppEnv } from '../types';
 

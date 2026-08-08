@@ -1,9 +1,9 @@
-import type { User } from '../../domain/entities/user.entity';
-import { UserAlreadyExistsError } from '../../domain/errors/domain-errors';
-import type { EmailSender } from '../../domain/ports/email-sender.port';
-import type { PasswordHasher } from '../../domain/ports/password-hasher.port';
-import type { TokenService } from '../../domain/ports/token-service.port';
-import type { UserRepository } from '../../domain/ports/user-repository.port';
+import type { User } from '@/domain/entities/user.entity';
+import { UserAlreadyExistsError } from '@/domain/errors/domain-errors';
+import type { EmailSender } from '@/domain/ports/email-sender.port';
+import type { PasswordHasher } from '@/domain/ports/password-hasher.port';
+import type { TokenService } from '@/domain/ports/token-service.port';
+import type { UserRepository } from '@/domain/ports/user-repository.port';
 
 export interface RegisterUserInput {
   email: string;

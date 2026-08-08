@@ -1,8 +1,8 @@
-import type { ExchangeRequest } from '../../domain/entities/exchange-request.entity';
+import type { ExchangeRequest } from '@/domain/entities/exchange-request.entity';
 import type {
   ExchangeRequestRepository,
   PaginatedResult,
-} from '../../domain/ports/exchange-request-repository.port';
+} from '@/domain/ports/exchange-request-repository.port';
 
 export interface ListExchangeRequestsInput {
   userId: string;

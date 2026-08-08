@@ -1,5 +1,5 @@
-import type { ExchangeRate } from '../../domain/entities/exchange-rate.entity';
-import type { ExchangeRateRepository } from '../../domain/ports/exchange-rate-repository.port';
+import type { ExchangeRate } from '@/domain/entities/exchange-rate.entity';
+import type { ExchangeRateRepository } from '@/domain/ports/exchange-rate-repository.port';
 
 export class ListExchangeRatesUseCase {
   constructor(private readonly exchangeRateRepository: ExchangeRateRepository) {}

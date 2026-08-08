@@ -1,5 +1,5 @@
-import { ExchangeRequestNotFoundError } from '../../domain/errors/domain-errors';
-import type { ExchangeRequestRepository } from '../../domain/ports/exchange-request-repository.port';
+import { ExchangeRequestNotFoundError } from '@/domain/errors/domain-errors';
+import type { ExchangeRequestRepository } from '@/domain/ports/exchange-request-repository.port';
 
 export class DeleteExchangeRequestUseCase {
   constructor(private readonly exchangeRequestRepository: ExchangeRequestRepository) {}

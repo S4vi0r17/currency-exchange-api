@@ -1,7 +1,7 @@
 import { importJWK, type JWK, jwtVerify, SignJWT } from 'jose';
-import { env } from '../../config/env';
-import type { UserRole } from '../../domain/entities/user.entity';
-import type { AuthTokenPayload, TokenService } from '../../domain/ports/token-service.port';
+import { env } from '@/config/env';
+import type { UserRole } from '@/domain/entities/user.entity';
+import type { AuthTokenPayload, TokenService } from '@/domain/ports/token-service.port';
 
 const ISSUER = 'currency-exchange-api';
 

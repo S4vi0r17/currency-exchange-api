@@ -1,5 +1,5 @@
 import type { Context, MiddlewareHandler, Next } from 'hono';
-import type { TokenService } from '../../../domain/ports/token-service.port';
+import type { TokenService } from '@/domain/ports/token-service.port';
 import type { AppEnv } from '../types';
 
 // WHY: el middleware necesita el TokenService concreto que arma el composition root

@@ -1,5 +1,5 @@
-import { env } from '../../config/env';
-import type { EmailSender } from '../../domain/ports/email-sender.port';
+import { env } from '@/config/env';
+import type { EmailSender } from '@/domain/ports/email-sender.port';
 
 // NOTE: adapter alternativo -- se activa solo si RESEND_API_KEY está seteado
 export class ResendEmailSender implements EmailSender {

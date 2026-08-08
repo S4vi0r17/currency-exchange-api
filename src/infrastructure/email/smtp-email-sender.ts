@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
-import { env } from '../../config/env';
-import type { EmailSender } from '../../domain/ports/email-sender.port';
+import { env } from '@/config/env';
+import type { EmailSender } from '@/domain/ports/email-sender.port';
 
 // NOTE: apunta a Mailhog en dev/docker-compose (sin TLS, sin auth) -- adapter por defecto
 export class SmtpEmailSender implements EmailSender {

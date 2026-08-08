@@ -1,10 +1,10 @@
-import type { RateType } from '../../domain/entities/exchange-rate.entity';
-import type { ExchangeRequest } from '../../domain/entities/exchange-request.entity';
-import { ExchangeRateProviderUnavailableError } from '../../domain/errors/domain-errors';
-import type { ExchangeRequestRepository } from '../../domain/ports/exchange-request-repository.port';
-import type { RateProvider } from '../../domain/ports/rate-provider.port';
-import { calculateAmountReceived } from '../../domain/services/exchange-calculator';
-import { roundToCents } from '../../domain/value-objects/money';
+import type { RateType } from '@/domain/entities/exchange-rate.entity';
+import type { ExchangeRequest } from '@/domain/entities/exchange-request.entity';
+import { ExchangeRateProviderUnavailableError } from '@/domain/errors/domain-errors';
+import type { ExchangeRequestRepository } from '@/domain/ports/exchange-request-repository.port';
+import type { RateProvider } from '@/domain/ports/rate-provider.port';
+import { calculateAmountReceived } from '@/domain/services/exchange-calculator';
+import { roundToCents } from '@/domain/value-objects/money';
 
 export interface CreateExchangeRequestInput {
   userId: string;

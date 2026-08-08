@@ -1,14 +1,14 @@
 // WHY: wiring manual, sin librería de DI
-import { CreateExchangeRateUseCase } from '../application/use-cases/create-exchange-rate.use-case';
-import { CreateExchangeRequestUseCase } from '../application/use-cases/create-exchange-request.use-case';
-import { DeleteExchangeRequestUseCase } from '../application/use-cases/delete-exchange-request.use-case';
-import { GetExchangeRequestUseCase } from '../application/use-cases/get-exchange-request.use-case';
-import { ListExchangeRatesUseCase } from '../application/use-cases/list-exchange-rates.use-case';
-import { ListExchangeRequestsUseCase } from '../application/use-cases/list-exchange-requests.use-case';
-import { LoginUserUseCase } from '../application/use-cases/login-user.use-case';
-import { RegisterUserUseCase } from '../application/use-cases/register-user.use-case';
-import { SeedAdminUserUseCase } from '../application/use-cases/seed-admin-user.use-case';
-import { env } from '../config/env';
+import { CreateExchangeRateUseCase } from '@/application/use-cases/create-exchange-rate.use-case';
+import { CreateExchangeRequestUseCase } from '@/application/use-cases/create-exchange-request.use-case';
+import { DeleteExchangeRequestUseCase } from '@/application/use-cases/delete-exchange-request.use-case';
+import { GetExchangeRequestUseCase } from '@/application/use-cases/get-exchange-request.use-case';
+import { ListExchangeRatesUseCase } from '@/application/use-cases/list-exchange-rates.use-case';
+import { ListExchangeRequestsUseCase } from '@/application/use-cases/list-exchange-requests.use-case';
+import { LoginUserUseCase } from '@/application/use-cases/login-user.use-case';
+import { RegisterUserUseCase } from '@/application/use-cases/register-user.use-case';
+import { SeedAdminUserUseCase } from '@/application/use-cases/seed-admin-user.use-case';
+import { env } from '@/config/env';
 import { MongoExchangeRateRepository } from './db/repositories/mongo-exchange-rate.repository';
 import { MongoExchangeRequestRepository } from './db/repositories/mongo-exchange-request.repository';
 import { MongoUserRepository } from './db/repositories/mongo-user.repository';
