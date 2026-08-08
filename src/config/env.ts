@@ -6,6 +6,9 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
   MONGO_URI: z.string().min(1, 'MONGO_URI is required'),
 
+  // SECURITY: solo lectura, no requiere credenciales
+  EXTERNAL_RATES_URL: z.string().url(),
+
   // NOTE: llaves en formato JWK (JSON)
   JWT_PRIVATE_KEY: z.string().min(1, 'JWT_PRIVATE_KEY is required'),
   JWT_PUBLIC_KEY: z.string().min(1, 'JWT_PUBLIC_KEY is required'),

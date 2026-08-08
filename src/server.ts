@@ -3,6 +3,7 @@ import { seedAdminUser } from './bootstrap/seed-admin';
 import { env } from './config/env';
 import { connectToDatabase, isDatabaseConnected } from './db';
 import { authRoutes } from './routes/auth.routes';
+import { exchangeRequestRoutes } from './routes/exchange-requests.routes';
 import { rateRoutes } from './routes/rates.routes';
 import type { AppEnv } from './types/hono';
 
@@ -10,6 +11,7 @@ const app = new Hono<AppEnv>();
 
 app.route('/auth', authRoutes);
 app.route('/rates', rateRoutes);
+app.route('/exchange-requests', exchangeRequestRoutes);
 
 // GET /health - liveness + chequeo de conexión a Mongo
 app.get('/health', (c) => {
