@@ -1,0 +1,10 @@
+services:
+  api:
+    build: .
+    container_name: currency-exchange-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    # Solo escucha en loopback: nginx es el único que entra desde fuera.
+    ports:
+      - '127.0.0.1:3000:3000'
