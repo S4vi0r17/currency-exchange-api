@@ -1,4 +1,22 @@
 services:
+  api:
+    build: .
+    container_name: currency-exchange-api
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    environment:
+      MONGO_URI: mongodb://mongo:27017/currency_exchange
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+    depends_on:
+      mongo:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+
   mongo:
     image: mongo:7
     container_name: currency-exchange-mongo
