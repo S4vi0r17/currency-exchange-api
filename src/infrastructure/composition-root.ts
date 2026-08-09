@@ -15,7 +15,7 @@ import { MongoUserRepository } from './db/repositories/mongo-user.repository';
 import { ResendEmailSender } from './email/resend-email-sender';
 import { SmtpEmailSender } from './email/smtp-email-sender';
 import { HttpRateProvider } from './external/http-rate-provider';
-import { Argon2PasswordHasher } from './security/argon2-password-hasher';
+import { BunPasswordHasher } from './security/bun-password-hasher';
 import { JoseTokenService } from './security/jose-token.service';
 import { createAuthMiddleware } from './web/middlewares/auth.middleware';
 import { createAuthRoutes } from './web/routes/auth.routes';
@@ -26,7 +26,7 @@ import { createRateRoutes } from './web/routes/rates.routes';
 const userRepository = new MongoUserRepository();
 const exchangeRateRepository = new MongoExchangeRateRepository();
 const exchangeRequestRepository = new MongoExchangeRequestRepository();
-const passwordHasher = new Argon2PasswordHasher();
+const passwordHasher = new BunPasswordHasher();
 const tokenService = new JoseTokenService();
 const rateProvider = new HttpRateProvider();
 
