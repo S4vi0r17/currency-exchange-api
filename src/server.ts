@@ -1,7 +1,9 @@
+import { swaggerUI } from '@hono/swagger-ui';
 import { Hono } from 'hono';
 import { env } from './config/env';
 import { container } from './infrastructure/composition-root';
 import { connectToDatabase, isDatabaseConnected } from './infrastructure/db/connection';
+import { openApiSpec } from './infrastructure/web/openapi';
 import type { AppEnv } from './infrastructure/web/types';
 
 const app = new Hono<AppEnv>();
@@ -9,6 +11,10 @@ const app = new Hono<AppEnv>();
 app.route('/auth', container.routes.auth);
 app.route('/rates', container.routes.rates);
 app.route('/exchange-requests', container.routes.exchangeRequests);
+
+// Documentación con OpenAPI + Swagger UI
+app.get('/openapi.json', (c) => c.json(openApiSpec));
+app.get('/docs', swaggerUI({ url: '/openapi.json' }));
 
 // GET /health - liveness + chequeo de conexión a Mongo
 app.get('/health', (c) => {
